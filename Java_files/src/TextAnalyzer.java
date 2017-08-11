@@ -20,12 +20,45 @@ public class TextAnalyzer {
 	}
 
 
-	public String[] cut() {
+	private String[] cut() {
 	//This method converts the text to analyze into a table using the blank spaces as separators 
 		String[] tab= text.split(" ") ;
 		return tab;
 	}
 	
+	private static void replace(String[] table,int i, int j) {
+	//Exchange values of two given indices of a table 
+		String temp=table[i];
+		table[i]=table[j];
+		table[j]=temp;
+	}
+	
+	private static String[] subTable(String[] table,int start, int end){
+	//Extract a sub-table from a table between two given indices 
+		String[] subTable = new String[end-start];
+		for(int index=start; index<end; index++) {
+			subTable[index]=table[index];
+		}
+		return subTable;
+	}
+	
+	private static int smaller(String[] table) {
+	// Returns the index of the smallest String of a table of String 
+		int index=0;
+		for(int i=1;i<table.length;i++) {
+			if(table[i].length() < table[index].length()) {
+				index=i;			
+			}
+		}
+		return index;
+	}
+	
+	private static void sortByLength(String[] table) {
+		int nb=table.length; 
+		for(int i=0;i<nb-1;i++) {
+			String smaller =table[smaller(subTable(table,i,nb))];
+		}
+	}
 	public static String[] tableSort(String[] tab) {
 	// This method sorts a given table of String objects. It will be used in the class.
 		Arrays.sort(tab);
@@ -48,6 +81,7 @@ public class TextAnalyzer {
 	}
 	
 	public String[] count(){
+		//Return the sorted table and the occurrence of each word
 		String[] sortedTab =tableSort(this.cut());
 		String[] countingResult = new String[this.numberOfDistinctElements()];
 		int nb=sortedTab.length;
@@ -69,7 +103,17 @@ public class TextAnalyzer {
 		return countingResult;
 	}
 	public static void main(String[] args) {
-		
-	}
+		String text="The quick brown fox jumped over the lazy brown dog’s back";
+		TextAnalyzer textToAnalyze= new TextAnalyzer(text);
 
+		String[] table=textToAnalyze.cut();
+		for( int i=0; i<table.length; i++) {
+			System.out.println(table[i]);
+		}
+		textToAnalyze.replace(table, 1, 5);
+		for( int i=0; i<table.length; i++) {
+			System.out.println(table[i]);
+		}
+	}
+	
 }
