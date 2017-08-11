@@ -6,7 +6,7 @@ public class Test {
 		String[] table = textToAnalyze.cut();
 		
 		String[] countedTable= textToAnalyze.count();
-		for( int i=0; i<table.length; i++) {
+		for( int i=0; i<countedTable.length; i++) {
 			System.out.println(countedTable[i]);
 		}
 	}

@@ -32,24 +32,40 @@ public class TextAnalyzer {
 		return tab;
 	}
 	
+	private int numberOfDistinctElements() {
+		// This method counts how many different words we have on the text
+		int total=0;
+		String[] sortedTab =tableSort(this.cut());
+		int nb=sortedTab.length;
+		for(int index=0; index<nb-1; index++) {
+			if(!(sortedTab[index].equals(sortedTab[index+1]))) total++;
+		}
+		//For the last element of the table:
+		if(!(sortedTab[nb-1].equals(sortedTab[nb-2]))){
+			total++;
+		}
+		return total;
+	}
+	
 	public String[] count(){
 		String[] sortedTab =tableSort(this.cut());
-		String[] countingResult = new String[sortedTab.length];
-		int nb=sortedTab.length-1;
-		int count = 1;
-		for(int index=0; index<nb; index++) {
-			if(sortedTab[index].equals(sortedTab[index+1])) count+=1;
+		String[] countingResult = new String[this.numberOfDistinctElements()];
+		int nb=sortedTab.length;
+		int count = 1;// The number of time a word appears 
+		int place=0;// place of the word in countingResult
+		for(int index=0; index<nb-1; index++) {
+			if(sortedTab[index].equals(sortedTab[index+1])) count++;
 			else 
 			{
-				countingResult[index] = (count) +" "+ sortedTab[index];
+				countingResult[place] = (count) +" "+ sortedTab[index];
 				count = 1;
+				place++;
 			}
 		}
 		//For the last element of the table:
-		if(!(sortedTab[nb].equals(sortedTab[nb-1]))){
-			countingResult[nb]= 1 + " " + sortedTab[nb];
+		if(place<this.numberOfDistinctElements()){
+			countingResult[this.numberOfDistinctElements()-1]= 1 + " " + sortedTab[nb-1];
 		}
-		
 		return countingResult;
 	}
 	public static void main(String[] args) {
