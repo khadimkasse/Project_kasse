@@ -37,7 +37,7 @@ public class TextAnalyzer {
 	//Extract a sub-table from a table between two given indices 
 		String[] subTable = new String[end-start];
 		for(int index=start; index<end; index++) {
-			subTable[index]=table[index];
+			subTable[index-start]=table[index];
 		}
 		return subTable;
 	}
@@ -56,7 +56,8 @@ public class TextAnalyzer {
 	private static void sortByLength(String[] table) {
 		int nb=table.length; 
 		for(int i=0;i<nb-1;i++) {
-			String smaller =table[smaller(subTable(table,i,nb))];
+			int smaller =smaller(subTable(table,i,nb));
+			replace(table,i,smaller);
 		}
 	}
 	public static String[] tableSort(String[] tab) {
@@ -111,6 +112,12 @@ public class TextAnalyzer {
 			System.out.println(table[i]);
 		}
 		textToAnalyze.replace(table, 1, 5);
+		for( int i=0; i<table.length; i++) {
+			System.out.println(table[i]);
+		}
+		textToAnalyze.subTable(table, 2, 4);
+		System.out.println(table.length);
+		textToAnalyze.sortByLength(table);
 		for( int i=0; i<table.length; i++) {
 			System.out.println(table[i]);
 		}
