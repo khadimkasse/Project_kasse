@@ -5,8 +5,13 @@ PROJECT DESCRIPTION
 A program that processes a text and gives the list of words and their occurence.
 This  is a README file that illustrate some points about the Java code of the project.
 
-The project was implemented on Eclipse Oxygen(4.7.0).
+SOFTWARES USED
+The project was implemented on Eclipse Oxygen(4.7.0) for JAVA 8.
 
-The project contains two .java files in an src directory.
+COMPOSITION 
+The project contains three .java files in an src directory.
 
-To run the project and do tests on it, please use a "string" entry on the class TextAnalyzer. It will provide you another version of it sorted only by ASCII but not by length. 
+HOW TO USE THE PROGRAM
+The program can be used in two differents ways. 
+The first one consists in lauching the user interface class and follow the instructions printed in the console. 
+The second use consists in creating a TextAnalyzer object in the test class and using the "analyse()" method on it.
