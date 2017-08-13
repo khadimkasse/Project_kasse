@@ -40,7 +40,7 @@ public class TextAnalyzer {
 	 * table using the blank spaces as separators 
 	 */
 	private String[] cut() {
-		String[] tab= this.getText().split(" ") ;
+		String[] tab= this.getText().split(" ") ;//uses the JAVA API method
 		return tab;
 	}
 	
@@ -111,7 +111,7 @@ public class TextAnalyzer {
 	 * This method sorts a given table of String objects. The method uses the sort method given by JAVA API
 	 */
 	public static void sortByASCII(String[] tab) {
-		Arrays.sort(tab);
+		Arrays.sort(tab);////uses the JAVA API method(java.util.Arrays)
 	}
 	
 	/**
@@ -182,22 +182,24 @@ public class TextAnalyzer {
 
 	/**
 	 * @param args
+	 * main method: To test all private method
 	 */
-	public static void main(String[] args) {
+	
+/*	public static void main(String[] args) {
 		String text="The quick brown fox jumped over the lazy brown dog’s back";
 		TextAnalyzer textToAnalyze= new TextAnalyzer(text);
 		
 		String [] table=textToAnalyze.cut();
 		String[] countedTable= textToAnalyze.count();
 		
-		/*//test replace
+		//test replace
 		replace(table,1,4);
 		for( int i=0; i<table.length; i++) {
 			System.out.println(table[i]);
-		}*/
+		}
 		
 		
-		/*//Test:smaller();
+		//Test:smaller();
 		for(int i=0;i<table.length-1;i++) {
 			int smaller =smaller(subTable(table,i,table.length-1));
 			System.out.println("Plus peut indice: " + smaller + " " +subTable(table,i,table.length-1)[smaller]);
@@ -208,17 +210,20 @@ public class TextAnalyzer {
 			}
 			
 		}
-		*/
 		
-		/*
+		
+		
 		//Test:subtable;
 		String[] subtable=subTable(table,2,10);
-		*/
 		
-		//Test: sortByLength()
+		
+		
+		//Test: sort()
 		sort(table);
 		for( int i=0; i<table.length; i++) {
 			System.out.println(table[i]);
 		}
+		
 	}
+	*/
 }
