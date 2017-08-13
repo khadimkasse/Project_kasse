@@ -2,7 +2,7 @@
 public class Test {
 	public static void main(String[] args) {
 		String text="The quick brown fox jumped over the lazy brown dog’s back";
-		String text2="Java is a general-purpose computer programming language that "
+		String javaIntroduction="Java is a general-purpose computer programming language that "
 				+ "is concurrent, class-based, object-oriented,[14] and specifically"
 				+ " designed to have as few implementation dependencies as possible. "
 				+ "It is intended to let application developers "
@@ -18,7 +18,8 @@ public class Test {
 				+ " of Sun Microsystems' Java platform. The language derives much of its "
 				+ "syntax from C and C++, but it has fewer low-level facilities than either "
 				+ "of them.";
-		TextAnalyzer textToAnalyze= new TextAnalyzer(text2);
+		TextAnalyzer textToAnalyze= new TextAnalyzer(text);
+		
 				
 		textToAnalyze.analyze();
 	}
