@@ -35,8 +35,8 @@ public class TextAnalyzer {
 	
 	private static String[] subTable(String[] table,int start, int end){
 	//Extract a sub-table from a table between two given indices 
-		String[] subTable = new String[end-start];
-		for(int index=start; index<end; index++) {
+		String[] subTable = new String[end-start+1];
+		for(int index=start; index<=end; index++) {
 			subTable[index-start]=table[index];
 		}
 		return subTable;
@@ -56,8 +56,8 @@ public class TextAnalyzer {
 	private static void sortByLength(String[] table) {
 		int nb=table.length; 
 		for(int i=0;i<nb-1;i++) {
-			int smaller =smaller(subTable(table,i,nb));
-			replace(table,i,smaller);
+			int smaller =smaller(subTable(table,i,nb-1));
+			if(smaller!=0) replace(table,i,i+smaller);
 		}
 	}
 	public static String[] tableSort(String[] tab) {
@@ -103,24 +103,41 @@ public class TextAnalyzer {
 		}
 		return countingResult;
 	}
+	
+
 	public static void main(String[] args) {
 		String text="The quick brown fox jumped over the lazy brown dog’s back";
 		TextAnalyzer textToAnalyze= new TextAnalyzer(text);
-
-		String[] table=textToAnalyze.cut();
+		
+		String [] table=textToAnalyze.cut();
+		String[] countedTable= textToAnalyze.count();
+		
+		/*//test replace
+		replace(table,1,4);
 		for( int i=0; i<table.length; i++) {
 			System.out.println(table[i]);
 		}
-		textToAnalyze.replace(table, 1, 5);
-		for( int i=0; i<table.length; i++) {
-			System.out.println(table[i]);
+		*/
+		
+		/*//Test:smaller();
+		for(int i=0;i<table.length-1;i++) {
+			int smaller =smaller(subTable(table,i,table.length-1));
+			System.out.println("Plus peut indice: " + smaller + " " +subTable(table,i,table.length-1)[smaller]);
+			if(i!=smaller) replace(table,i,i+smaller);
+			System.out.println("Tableau analysé au tour :" + i);
+			for( int j=0; j<subTable(table,i,table.length-1).length; j++) {
+				System.out.println(table[j]);
+			}
+			
 		}
-		textToAnalyze.subTable(table, 2, 4);
-		System.out.println(table.length);
-		textToAnalyze.sortByLength(table);
+		*/
+		//Test:subtable;
+		String[] subtable=subTable(table,2,10);
+		
+		//Test: sortByLength()
+		sortByLength(table);
 		for( int i=0; i<table.length; i++) {
 			System.out.println(table[i]);
 		}
 	}
-	
 }
